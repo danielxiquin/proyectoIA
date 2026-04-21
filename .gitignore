@@ -114,4 +114,4 @@ celerybeat.pid
 staticfiles/
 media/
 uploads/
-data/*.csv
+*.csv
