@@ -11,6 +11,10 @@ from bag_of_words import BagOfWords
 from naive_bayes import NaiveBayesClassifier
 from evaluator import KFoldsEvaluator
 
+# ── Configuración central ──────────────────────────────────────────────────────
+# Para cambiar dataset o categorías: edita config.py
+from config import DATASET_FILE, COL_TEXT, COL_LABEL
+
 
 # ── 1. Cargar dataset ──────────────────────────────────────────────────────────
 def load_dataset(filepath):
@@ -18,8 +22,8 @@ def load_dataset(filepath):
     with open(filepath, encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            text  = row.get('instruction', '').strip()
-            label = row.get('category', '').strip()
+            text  = row.get(COL_TEXT,  '').strip()
+            label = row.get(COL_LABEL, '').strip()
             if text and label:
                 X.append(text)
                 y.append(label)
@@ -181,7 +185,7 @@ if __name__ == "__main__":
 
     # Ruta al dataset (relativa a la raiz del proyecto)
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    DATA_PATH  = os.path.join(BASE_DIR, "data", "bitext_customer_support.csv")
+    DATA_PATH  = os.path.join(BASE_DIR, "data", DATASET_FILE)
     MODEL_PATH = os.path.join(BASE_DIR, "model", "naive_bayes_model.pkl")
 
     # 1. Cargar datos

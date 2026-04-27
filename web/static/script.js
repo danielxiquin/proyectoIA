@@ -7,35 +7,13 @@ const tickets       = [];
 let selectedPriority = 'normal';
 let currentFilter   = 'all';
 
-// ── Category accent colors ────────────────────────────────
-const CAT_COLORS = {
-  // Bitext dataset labels
-  'ORDER':                    '#3B82F6',
-  'BILLING':                  '#8B5CF6',
-  'SHIPPING':                 '#06B6D4',
-  'REFUND':                   '#EC4899',
-  'ACCOUNT':                  '#6366F1',
-  'CANCEL':                   '#EF4444',
-  'CANCELLATION_REQUEST':     '#EF4444',
-  'CONTACT':                  '#10B981',
-  'DELIVERY':                 '#14B8A6',
-  'FEEDBACK':                 '#F59E0B',
-  'NEWSLETTER_SUBSCRIPTION':  '#A855F7',
-  'SUBSCRIPTION':             '#A855F7',
-  'PAYMENT':                  '#F97316',
-  'INVOICE':                  '#F97316',
-  'TECHNICAL':                '#64748B',
-  'COMPLAINT':                '#EF4444',
-  // Friendly display names (fallback)
-  'Billing inquiry':          '#8B5CF6',
-  'Cancellation request':     '#EF4444',
-  'Product inquiry':          '#3B82F6',
-  'Refund request':           '#EC4899',
-  'Technical issue':          '#64748B',
-};
-
+// ── Category helpers — lee desde config.js ────────────────
+// CATEGORIES, CAT_COLOR y CAT_DISPLAY vienen de /static/config.js
 function getCatColor(key) {
-  return CAT_COLORS[key] || '#14B8A6';
+  return CAT_COLOR[key] || CAT_COLOR[CAT_DISPLAY[key]] || '#888888';
+}
+function getCatDisplay(key) {
+  return CAT_DISPLAY[key] || key;
 }
 
 // ── Init ──────────────────────────────────────────────────
