@@ -142,7 +142,7 @@ proyecto-mesa-ayuda/
 
 ```bash
 # 1. Clonar o descargar el proyecto
-cd proyecto-mesa-ayuda
+git clone https://github.com/danielxiquin/proyectoIA
 
 # 2. Crear entorno virtual
 python -m venv venv
