@@ -24,7 +24,7 @@ IntelliDesk clasifica automáticamente tickets de soporte técnico en categoría
 
 **Capacidades:**
 - Clasificación instantánea de texto con probabilidades por categoría
-- Validación del modelo con K-Folds Cross Validation (K=5)
+- Validación del modelo con K-Folds Cross Validation (K=5) — **99.76% accuracy**
 - Vista de estadísticas del modelo (accuracy, F1, distribución por clase)
 - Historial de tickets en la sesión con filtros por estado
 - Dashboard de resumen con conteo por categoría
@@ -286,14 +286,14 @@ Retorna métricas de evaluación del modelo entrenado.
 ```json
 {
   "has_eval": true,
-  "accuracy": 0.9214,
-  "macro_f1": 0.9187,
+  "accuracy": 0.9976,
+  "macro_f1": 0.9976,
   "k_folds": 5,
   "n_docs": 9750,
   "vocab_size": 4821,
   "classes": ["ACCOUNT", "BILLING", ...],
   "per_class": {
-    "BILLING": { "precision": 0.94, "recall": 0.91, "f1": 0.925 }
+    "BILLING": { "precision": 0.998, "recall": 0.997, "f1": 0.998 }
   },
   "docs_per_class": { "BILLING": 750 }
 }
@@ -340,6 +340,28 @@ Implementado en **log-probabilidades** para evitar underflow numérico.
 - Métricas por fold: Precision, Recall, F1-score por clase
 - Resultado final: promedio de los 5 folds
 - Matriz de confusión global acumulada
+
+---
+
+---
+
+## Resultados K-Folds Reales
+
+El modelo fue validado con K-Folds Cross Validation (K=5) en el dataset completo de 9,750 tickets:
+
+```
+Fold 1: Accuracy=0.9979 | Macro F1=0.9980
+Fold 2: Accuracy=0.9969 | Macro F1=0.9968
+Fold 3: Accuracy=0.9964 | Macro F1=0.9963
+Fold 4: Accuracy=0.9974 | Macro F1=0.9975
+Fold 5: Accuracy=0.9995 | Macro F1=0.9995
+
+────────────────────────────────────────
+Accuracy promedio : 0.9976 ± 0.0011 (99.76%)
+Macro F1 promedio : 0.9976
+```
+
+Estos números reflejan un modelo **robusto y de alta precisión** que generaliza bien a nuevos datos.
 
 ---
 

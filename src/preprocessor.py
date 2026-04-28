@@ -22,7 +22,6 @@ class Preprocessor:
         self.stemmer = PorterStemmer()
     
     def clean_text(self, text):
-        # Eliminar placeholders tipo {{Order Number}}, {{Customer Name}}, etc.
         text = re.sub(r'\{\{[^}]+\}\}', '', text)
         text = text.lower()
         text = re.sub(r'\d+', '', text)
