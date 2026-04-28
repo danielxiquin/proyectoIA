@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,344 +9,356 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<div class="app">
+    <div class="app">
 
-    <!-- ── SIDEBAR ──────────────────────────────────────── -->
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <div class="brand-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                          stroke="#14B8A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div>
-                <p class="brand-name">IntelliDesk</p>
-                <p class="brand-sub">Support Console</p>
-            </div>
-        </div>
-
-        <nav class="sidebar-nav">
-            <button class="nav-btn" data-view="dashboard" onclick="navigate('dashboard')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                    <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                    <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                    <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                Dashboard
-            </button>
-            <button class="nav-btn active" data-view="new-ticket" onclick="navigate('new-ticket')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                New Ticket
-            </button>
-            <button class="nav-btn" data-view="model" onclick="navigate('model')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                AI Model
-            </button>
-            <button class="nav-btn" data-view="history" onclick="navigate('history')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <line x1="8" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="3" cy="6" r="1" fill="currentColor"/>
-                    <circle cx="3" cy="12" r="1" fill="currentColor"/>
-                    <circle cx="3" cy="18" r="1" fill="currentColor"/>
-                </svg>
-                History
-            </button>
-        </nav>
-
-        <div class="sidebar-stats">
-            <p class="stats-label">OPEN TICKETS</p>
-            <p class="stats-number" id="open-count">00</p>
-            <p class="stats-urgent hidden" id="urgent-line">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                          fill="#EF4444" stroke="#EF4444"/>
-                </svg>
-                <span id="urgent-count">0</span> urgent
-            </p>
-        </div>
-    </aside>
-
-    <!-- ── MAIN ─────────────────────────────────────────── -->
-    <main class="main">
-
-        <!-- VIEW: DASHBOARD -->
-        <div class="view" id="view-dashboard">
-            <div class="view-header">
-                <span class="view-eyebrow">SUPPORT</span>
-                <h1 class="view-title">Dashboard</h1>
-            </div>
-
-            <div class="dash-grid">
-                <div class="dash-card">
-                    <p class="dash-label">Total Tickets</p>
-                    <p class="dash-value" id="dash-total">0</p>
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#14B8A6"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </div>
-                <div class="dash-card">
-                    <p class="dash-label">Open</p>
-                    <p class="dash-value clr-blue" id="dash-open">0</p>
-                </div>
-                <div class="dash-card">
-                    <p class="dash-label">In Progress</p>
-                    <p class="dash-value clr-amber" id="dash-progress">0</p>
-                </div>
-                <div class="dash-card">
-                    <p class="dash-label">Resolved</p>
-                    <p class="dash-value clr-green" id="dash-resolved">0</p>
+                <div>
+                    <p class="brand-name">IntelliDesk</p>
+                    <p class="brand-sub">Support Console</p>
                 </div>
             </div>
 
-            <div class="dash-section">
-                <span class="section-label">CATEGORIES THIS SESSION</span>
-                <div id="dash-categories" class="dash-cats">
-                    <p class="empty-text">No tickets yet.</p>
+            <nav class="sidebar-nav">
+                <button class="nav-btn" data-view="dashboard" onclick="navigate('dashboard')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    Dashboard
+                </button>
+                <button class="nav-btn active" data-view="new-ticket" onclick="navigate('new-ticket')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    New Ticket
+                </button>
+                <button class="nav-btn" data-view="model" onclick="navigate('model')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    AI Model
+                </button>
+                <button class="nav-btn" data-view="history" onclick="navigate('history')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <line x1="8" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                        <circle cx="3" cy="6" r="1" fill="currentColor" />
+                        <circle cx="3" cy="12" r="1" fill="currentColor" />
+                        <circle cx="3" cy="18" r="1" fill="currentColor" />
+                    </svg>
+                    History
+                </button>
+            </nav>
+
+            <div class="sidebar-stats">
+                <p class="stats-label">OPEN TICKETS</p>
+                <p class="stats-number" id="open-count">00</p>
+                <p class="stats-urgent hidden" id="urgent-line">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                            fill="#EF4444" stroke="#EF4444" />
+                    </svg>
+                    <span id="urgent-count">0</span> urgent
+                </p>
+            </div>
+        </aside>
+
+        <main class="main">
+
+            <div class="view" id="view-dashboard">
+                <div class="view-header">
+                    <span class="view-eyebrow">SUPPORT</span>
+                    <h1 class="view-title">Dashboard</h1>
                 </div>
-            </div>
 
-            <div class="dash-section">
-                <span class="section-label">RECENT TICKETS</span>
-                <div id="dash-recent">
-                    <p class="empty-text">No tickets yet.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIEW: NEW TICKET -->
-        <div class="view active" id="view-new-ticket">
-            <div class="view-header">
-                <span class="view-eyebrow">SUPPORT</span>
-                <h1 class="view-title">Report an issue</h1>
-            </div>
-
-            <div class="ticket-meta-row">
-                <span class="ticket-meta-id" id="current-ticket-id">TKT-00000</span>
-                <span class="meta-dot">·</span>
-                <span class="ticket-meta-date" id="current-date"></span>
-            </div>
-
-            <div class="ticket-layout">
-
-                <!-- Form panel -->
-                <div class="form-panel">
-                    <div class="field">
-                        <label class="field-label">SUBJECT</label>
-                        <input class="field-input" type="text" id="subject"
-                               placeholder="Brief description of your issue" maxlength="100">
+                <div class="dash-grid">
+                    <div class="dash-card">
+                        <p class="dash-label">Total Tickets</p>
+                        <p class="dash-value" id="dash-total">0</p>
                     </div>
+                    <div class="dash-card">
+                        <p class="dash-label">Open</p>
+                        <p class="dash-value clr-blue" id="dash-open">0</p>
+                    </div>
+                    <div class="dash-card">
+                        <p class="dash-label">In Progress</p>
+                        <p class="dash-value clr-amber" id="dash-progress">0</p>
+                    </div>
+                    <div class="dash-card">
+                        <p class="dash-label">Resolved</p>
+                        <p class="dash-value clr-green" id="dash-resolved">0</p>
+                    </div>
+                </div>
 
-                    <div class="field">
-                        <label class="field-label">PRIORITY</label>
-                        <div class="priority-group">
-                            <button class="prio-btn" data-prio="low" onclick="setPriority(this)">Low</button>
-                            <button class="prio-btn active" data-prio="normal" onclick="setPriority(this)">Normal</button>
-                            <button class="prio-btn" data-prio="high" onclick="setPriority(this)">High</button>
-                            <button class="prio-btn prio-urgent" data-prio="urgent" onclick="setPriority(this)">Urgent</button>
+                <div class="dash-section">
+                    <span class="section-label">CATEGORIES THIS SESSION</span>
+                    <div id="dash-categories" class="dash-cats">
+                        <p class="empty-text">No tickets yet.</p>
+                    </div>
+                </div>
+
+                <div class="dash-section">
+                    <span class="section-label">RECENT TICKETS</span>
+                    <div id="dash-recent">
+                        <p class="empty-text">No tickets yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view active" id="view-new-ticket">
+                <div class="view-header">
+                    <span class="view-eyebrow">SUPPORT</span>
+                    <h1 class="view-title">Report an issue</h1>
+                </div>
+
+                <div class="ticket-meta-row">
+                    <span class="ticket-meta-id" id="current-ticket-id">TKT-00000</span>
+                    <span class="meta-dot">·</span>
+                    <span class="ticket-meta-date" id="current-date"></span>
+                </div>
+
+                <div class="ticket-layout">
+
+                    <div class="form-panel">
+                        <div class="field">
+                            <label class="field-label">SUBJECT</label>
+                            <input class="field-input" type="text" id="subject"
+                                placeholder="Brief description of your issue" maxlength="100">
                         </div>
-                    </div>
 
-                    <div class="field">
-                        <label class="field-label">DESCRIPTION <span class="req">*</span></label>
-                        <textarea class="field-textarea" id="description"
-                                  placeholder="Describe your issue in detail — order numbers, dates, what happened..."
-                                  rows="7" maxlength="1000"></textarea>
-                        <div class="char-row"><span id="char-count">0</span> chars</div>
-                    </div>
-
-                    <div class="actions-row">
-                        <button class="btn-classify" onclick="classifyOnly()">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
-                                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            Auto-Classify
-                        </button>
-                        <button class="btn-submit" id="submit-btn" onclick="submitTicket()">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                                <line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                            </svg>
-                            <span id="btn-text">Submit ticket</span>
-                            <span id="btn-loading" class="hidden">Classifying...</span>
-                        </button>
-                    </div>
-
-                    <div class="examples-section">
-                        <span class="examples-label">TRY AN EXAMPLE</span>
-                        <div class="example-chips">
-                            <button class="chip" onclick="fillExample('My order has not arrived after 2 weeks')">My order hasn't arrived after 2 weeks</button>
-                            <button class="chip" onclick="fillExample('I was double charged on my credit card this month')">I was double charged on my credit card</button>
-                            <button class="chip" onclick="fillExample('I need to cancel my subscription immediately')">I need to cancel my subscription</button>
-                            <button class="chip" onclick="fillExample('The app crashes every time I try to log in')">The app won't let me log in</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Classification panel -->
-                <div class="classify-panel">
-                    <div class="classify-header">
-                        <span class="section-label">AI CLASSIFICATION</span>
-                    </div>
-
-                    <div class="classify-empty" id="classify-empty">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="#475569" stroke-width="1.5"/>
-                            <line x1="12" y1="8" x2="12" y2="12" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="12" cy="16" r="1" fill="#475569"/>
-                        </svg>
-                        <p>Enter your issue and click<br><strong>Auto-Classify</strong> to see results</p>
-                    </div>
-
-                    <div class="classify-result hidden" id="classify-result">
-                        <div class="top-category" id="top-category">
-                            <div class="top-cat-dot" id="top-cat-dot"></div>
-                            <div>
-                                <p class="top-cat-name" id="top-cat-name">—</p>
-                                <p class="top-cat-conf" id="top-cat-conf">—% confidence</p>
+                        <div class="field">
+                            <label class="field-label">PRIORITY</label>
+                            <div class="priority-group">
+                                <button class="prio-btn" data-prio="low" onclick="setPriority(this)">Low</button>
+                                <button class="prio-btn active" data-prio="normal"
+                                    onclick="setPriority(this)">Normal</button>
+                                <button class="prio-btn" data-prio="high" onclick="setPriority(this)">High</button>
+                                <button class="prio-btn prio-urgent" data-prio="urgent"
+                                    onclick="setPriority(this)">Urgent</button>
                             </div>
                         </div>
 
-                        <span class="section-label" style="margin-top:1.25rem;display:block">ALL CATEGORIES</span>
-                        <div id="prob-bars" class="prob-list"></div>
-                    </div>
-
-                    <div class="classify-ticket-info hidden" id="classify-ticket-info">
-                        <div class="ti-row">
-                            <span class="ti-label">TICKET ID</span>
-                            <span class="ti-value" id="ti-id">—</span>
+                        <div class="field">
+                            <label class="field-label">DESCRIPTION <span class="req">*</span></label>
+                            <textarea class="field-textarea" id="description"
+                                placeholder="Describe your issue in detail — order numbers, dates, what happened..."
+                                rows="7" maxlength="1000"></textarea>
+                            <div class="char-row"><span id="char-count">0</span> chars</div>
                         </div>
-                        <div class="ti-row">
-                            <span class="ti-label">CREATED</span>
-                            <span class="ti-value" id="ti-date">—</span>
+
+                        <div class="actions-row">
+                            <button class="btn-classify" onclick="classifyOnly()">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+                                    <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                Auto-Classify
+                            </button>
+                            <button class="btn-submit" id="submit-btn" onclick="submitTicket()">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                                    <line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                                </svg>
+                                <span id="btn-text">Submit ticket</span>
+                                <span id="btn-loading" class="hidden">Classifying...</span>
+                            </button>
                         </div>
-                        <div class="ti-row">
-                            <span class="ti-label">STATUS</span>
-                            <span class="ti-value clr-amber">Draft</span>
+
+                        <div class="examples-section">
+                            <span class="examples-label">TRY AN EXAMPLE</span>
+                            <div class="example-chips">
+                                <button class="chip" onclick="fillExample('My order has not arrived after 2 weeks')">My
+                                    order hasn't arrived after 2 weeks</button>
+                                <button class="chip"
+                                    onclick="fillExample('I was double charged on my credit card this month')">I was
+                                    double charged on my credit card</button>
+                                <button class="chip"
+                                    onclick="fillExample('I need to cancel my subscription immediately')">I need to
+                                    cancel my subscription</button>
+                                <button class="chip"
+                                    onclick="fillExample('The app crashes every time I try to log in')">The app won't
+                                    let me log in</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="classify-panel">
+                        <div class="classify-header">
+                            <span class="section-label">AI CLASSIFICATION</span>
+                        </div>
+
+                        <div class="classify-empty" id="classify-empty">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="#475569" stroke-width="1.5" />
+                                <line x1="12" y1="8" x2="12" y2="12" stroke="#475569" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <circle cx="12" cy="16" r="1" fill="#475569" />
+                            </svg>
+                            <p>Enter your issue and click<br><strong>Auto-Classify</strong> to see results</p>
+                        </div>
+
+                        <div class="classify-result hidden" id="classify-result">
+                            <div class="top-category" id="top-category">
+                                <div class="top-cat-dot" id="top-cat-dot"></div>
+                                <div>
+                                    <p class="top-cat-name" id="top-cat-name">—</p>
+                                    <p class="top-cat-conf" id="top-cat-conf">—% confidence</p>
+                                </div>
+                            </div>
+
+                            <span class="section-label" style="margin-top:1.25rem;display:block">ALL CATEGORIES</span>
+                            <div id="prob-bars" class="prob-list"></div>
+                        </div>
+
+                        <div class="classify-ticket-info hidden" id="classify-ticket-info">
+                            <div class="ti-row">
+                                <span class="ti-label">TICKET ID</span>
+                                <span class="ti-value" id="ti-id">—</span>
+                            </div>
+                            <div class="ti-row">
+                                <span class="ti-label">CREATED</span>
+                                <span class="ti-value" id="ti-date">—</span>
+                            </div>
+                            <div class="ti-row">
+                                <span class="ti-label">STATUS</span>
+                                <span class="ti-value clr-amber">Draft</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="view" id="view-model">
+                <div class="view-header">
+                    <span class="view-eyebrow">NAÏVE BAYES</span>
+                    <h1 class="view-title">Model Statistics</h1>
+                </div>
+
+                <div class="model-loading" id="model-loading">
+                    <span class="model-loading-dot"></span> Loading model data...
+                </div>
+
+                <div class="model-content hidden" id="model-content">
+
+                    <div class="model-cards" id="model-cards">
+                        <div class="model-card">
+                            <p class="model-card-label">K-FOLDS ACCURACY</p>
+                            <p class="model-card-value neon-green" id="mc-accuracy">—</p>
+                            <p class="model-card-sub" id="mc-k">5-fold cross validation</p>
+                        </div>
+                        <div class="model-card">
+                            <p class="model-card-label">MACRO F1-SCORE</p>
+                            <p class="model-card-value neon-cyan" id="mc-f1">—</p>
+                            <p class="model-card-sub">Average across all classes</p>
+                        </div>
+                        <div class="model-card">
+                            <p class="model-card-label">TRAINING DOCS</p>
+                            <p class="model-card-value" id="mc-docs">—</p>
+                            <p class="model-card-sub">Labeled examples used</p>
+                        </div>
+                        <div class="model-card">
+                            <p class="model-card-label">VOCABULARY</p>
+                            <p class="model-card-value" id="mc-vocab">—</p>
+                            <p class="model-card-sub">Unique tokens (stemmed)</p>
+                        </div>
+                        <div class="model-card">
+                            <p class="model-card-label">CATEGORIES</p>
+                            <p class="model-card-value" id="mc-classes">—</p>
+                            <p class="model-card-sub">Support ticket types</p>
+                        </div>
+                        <div class="model-card">
+                            <p class="model-card-label">SMOOTHING</p>
+                            <p class="model-card-value neon-yellow">α = 1.0</p>
+                            <p class="model-card-sub">Laplace smoothing</p>
+                        </div>
+                    </div>
+
+                    <div class="model-section">
+                        <span class="section-label">METRICS PER CLASS — averaged over K folds</span>
+                        <div class="model-table-wrap">
+                            <div class="model-table-head">
+                                <span>CATEGORY</span>
+                                <span>PRECISION</span>
+                                <span>RECALL</span>
+                                <span>F1-SCORE</span>
+                                <span>F1 BAR</span>
+                            </div>
+                            <div id="model-table-rows"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-section">
+                        <span class="section-label">TRAINING DATA DISTRIBUTION</span>
+                        <div id="model-dist-bars" class="model-dist"></div>
+                    </div>
+
+                </div>
+
+                <div class="model-no-eval hidden" id="model-no-eval">
+                    <p>The current model was trained without saving evaluation metrics.</p>
+                    <p style="margin-top:.5rem;color:var(--dim)">Re-run <code
+                            style="background:var(--card);padding:.2rem .4rem;border-radius:4px;color:var(--accent)">python src/train.py</code>
+                        to generate full statistics.</p>
+                </div>
+            </div>
+
+            <div class="view" id="view-history">
+                <div class="view-header">
+                    <span class="view-eyebrow">SUPPORT</span>
+                    <div class="view-header-row">
+                        <h1 class="view-title">Ticket History</h1>
+                        <div class="filter-group">
+                            <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">All</button>
+                            <button class="filter-btn" data-filter="open" onclick="setFilter(this)">Open</button>
+                            <button class="filter-btn" data-filter="in-progress" onclick="setFilter(this)">In
+                                Progress</button>
+                            <button class="filter-btn" data-filter="resolved"
+                                onclick="setFilter(this)">Resolved</button>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- VIEW: AI MODEL STATS -->
-        <div class="view" id="view-model">
-            <div class="view-header">
-                <span class="view-eyebrow">NAÏVE BAYES</span>
-                <h1 class="view-title">Model Statistics</h1>
-            </div>
-
-            <div class="model-loading" id="model-loading">
-                <span class="model-loading-dot"></span> Loading model data...
-            </div>
-
-            <div class="model-content hidden" id="model-content">
-
-                <!-- Global metric cards -->
-                <div class="model-cards" id="model-cards">
-                    <div class="model-card">
-                        <p class="model-card-label">K-FOLDS ACCURACY</p>
-                        <p class="model-card-value neon-green" id="mc-accuracy">—</p>
-                        <p class="model-card-sub" id="mc-k">5-fold cross validation</p>
+                <div class="table-wrap">
+                    <div class="table-head">
+                        <span>TICKET</span>
+                        <span>SUBJECT</span>
+                        <span>CATEGORY</span>
+                        <span>STATUS</span>
+                        <span>DATE</span>
                     </div>
-                    <div class="model-card">
-                        <p class="model-card-label">MACRO F1-SCORE</p>
-                        <p class="model-card-value neon-cyan" id="mc-f1">—</p>
-                        <p class="model-card-sub">Average across all classes</p>
-                    </div>
-                    <div class="model-card">
-                        <p class="model-card-label">TRAINING DOCS</p>
-                        <p class="model-card-value" id="mc-docs">—</p>
-                        <p class="model-card-sub">Labeled examples used</p>
-                    </div>
-                    <div class="model-card">
-                        <p class="model-card-label">VOCABULARY</p>
-                        <p class="model-card-value" id="mc-vocab">—</p>
-                        <p class="model-card-sub">Unique tokens (stemmed)</p>
-                    </div>
-                    <div class="model-card">
-                        <p class="model-card-label">CATEGORIES</p>
-                        <p class="model-card-value" id="mc-classes">—</p>
-                        <p class="model-card-sub">Support ticket types</p>
-                    </div>
-                    <div class="model-card">
-                        <p class="model-card-label">SMOOTHING</p>
-                        <p class="model-card-value neon-yellow">α = 1.0</p>
-                        <p class="model-card-sub">Laplace smoothing</p>
+                    <div id="history-rows">
+                        <div class="table-empty">No tickets yet in this session</div>
                     </div>
                 </div>
-
-                <!-- Per-class metrics table + bars -->
-                <div class="model-section">
-                    <span class="section-label">METRICS PER CLASS — averaged over K folds</span>
-                    <div class="model-table-wrap">
-                        <div class="model-table-head">
-                            <span>CATEGORY</span>
-                            <span>PRECISION</span>
-                            <span>RECALL</span>
-                            <span>F1-SCORE</span>
-                            <span>F1 BAR</span>
-                        </div>
-                        <div id="model-table-rows"></div>
-                    </div>
-                </div>
-
-                <!-- Training distribution -->
-                <div class="model-section">
-                    <span class="section-label">TRAINING DATA DISTRIBUTION</span>
-                    <div id="model-dist-bars" class="model-dist"></div>
-                </div>
-
+                <p class="table-count" id="table-count"></p>
             </div>
 
-            <!-- Fallback: model without eval data -->
-            <div class="model-no-eval hidden" id="model-no-eval">
-                <p>The current model was trained without saving evaluation metrics.</p>
-                <p style="margin-top:.5rem;color:var(--dim)">Re-run <code style="background:var(--card);padding:.2rem .4rem;border-radius:4px;color:var(--accent)">python src/train.py</code> to generate full statistics.</p>
-            </div>
-        </div>
-
-        <!-- VIEW: HISTORY -->
-        <div class="view" id="view-history">
-            <div class="view-header">
-                <span class="view-eyebrow">SUPPORT</span>
-                <div class="view-header-row">
-                    <h1 class="view-title">Ticket History</h1>
-                    <div class="filter-group">
-                        <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">All</button>
-                        <button class="filter-btn" data-filter="open" onclick="setFilter(this)">Open</button>
-                        <button class="filter-btn" data-filter="in-progress" onclick="setFilter(this)">In Progress</button>
-                        <button class="filter-btn" data-filter="resolved" onclick="setFilter(this)">Resolved</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-wrap">
-                <div class="table-head">
-                    <span>TICKET</span>
-                    <span>SUBJECT</span>
-                    <span>CATEGORY</span>
-                    <span>STATUS</span>
-                    <span>DATE</span>
-                </div>
-                <div id="history-rows">
-                    <div class="table-empty">No tickets yet in this session</div>
-                </div>
-            </div>
-            <p class="table-count" id="table-count"></p>
-        </div>
-
-    </main>
-</div>
-<script src="/static/config.js"></script>
-<script src="/static/script.js"></script>
+        </main>
+    </div>
+    <script src="/static/config.js"></script>
+    <script src="/static/script.js"></script>
 </body>
+
 </html>

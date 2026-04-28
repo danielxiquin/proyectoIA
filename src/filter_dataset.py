@@ -14,13 +14,11 @@ import csv
 import os
 from collections import Counter
 
-# ── Rutas ─────────────────────────────────────────────────────────────────────
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INPUT_PATH  = os.path.join(BASE_DIR, "data", "complaints_raw.csv")
 OUTPUT_PATH = os.path.join(BASE_DIR, "data", "complaints_filtered.csv")
 
-# ── Categorias que queremos (las 5 mas grandes del dataset) ───────────────────
-# Puedes cambiar estas si el ingeniero pide otras
+
 TARGET_CATEGORIES = [
     "Debt collection",
     "Credit reporting, credit repair services, or other personal consumer reports",
@@ -29,7 +27,6 @@ TARGET_CATEGORIES = [
     "Checking or savings account",
 ]
 
-# Nombres cortos para mostrar en la web (mapeo)
 CATEGORY_MAP = {
     "Debt collection":          "Debt collection",
     "Credit reporting, credit repair services, or other personal consumer reports":
@@ -39,7 +36,6 @@ CATEGORY_MAP = {
     "Checking or savings account": "Bank account",
 }
 
-# ── Leer y filtrar ─────────────────────────────────────────────────────────────
 print("=" * 60)
 print("FILTRADO DEL DATASET — Consumer Complaint Database")
 print("=" * 60)
@@ -59,7 +55,6 @@ rows_filtradas  = []
 with open(INPUT_PATH, encoding='utf-8', errors='replace') as f:
     reader = csv.DictReader(f)
 
-    # Verificar columnas
     fieldnames = reader.fieldnames or []
     if 'Consumer complaint narrative' not in fieldnames:
         print(f"\n ERROR: No se encontro la columna 'Consumer complaint narrative'")
@@ -72,12 +67,10 @@ with open(INPUT_PATH, encoding='utf-8', errors='replace') as f:
         narrative = row.get('Consumer complaint narrative', '').strip()
         product   = row.get('Product', '').strip()
 
-        # Filtro 1: debe tener narrativa
         if not narrative or narrative.lower() == 'nan':
             sin_narrativa += 1
             continue
 
-        # Filtro 2: debe ser una de las 5 categorias objetivo
         if product not in TARGET_CATEGORIES:
             categoria_wrong += 1
             continue
@@ -92,14 +85,11 @@ print(f"  Sin narrativa      : {sin_narrativa:,}")
 print(f"  Otra categoria     : {categoria_wrong:,}")
 print(f"  Filas utiles       : {len(rows_filtradas):,}")
 
-# ── Distribucion por categoria ─────────────────────────────────────────────────
 dist = Counter(r['label'] for r in rows_filtradas)
 print(f"\nDistribucion por categoria:")
 for cat, cnt in dist.most_common():
     print(f"  {cat:<45} {cnt:>7,} ({cnt/len(rows_filtradas)*100:.1f}%)")
 
-# ── Balancear: tomar el mismo numero de ejemplos por categoria ─────────────────
-# Usamos el minimo entre categorias (o 20,000 max para no hacer el archivo enorme)
 min_per_class = min(dist.values())
 cap_per_class = min(min_per_class, 20_000)
 
@@ -122,7 +112,6 @@ random.shuffle(balanced)
 
 print(f"Total final        : {len(balanced):,} filas")
 
-# ── Guardar CSV filtrado ───────────────────────────────────────────────────────
 with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as f:
     writer = csv.DictWriter(f, fieldnames=['text', 'label'])
     writer.writeheader()

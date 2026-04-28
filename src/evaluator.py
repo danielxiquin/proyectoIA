@@ -134,6 +134,5 @@ class KFoldsEvaluator:
             print(f"{clase:<25} {avg_p:>10.4f} {avg_r:>10.4f} {avg_f:>10.4f}")
         print("="*60)
 
-        # Matriz de confusion global (acumulando predicciones de todos los folds)
         if all_y_true and all_y_pred:
             self.print_confusion_matrix(all_y_true, all_y_pred, classes)
